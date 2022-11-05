@@ -28,4 +28,6 @@ Staged files are files that are ready to be committed to the repository you are 
 
 5.  If there are multiple files you can add git add - all
 
-6. ...
+6.  creating a branch
+    git branch branch-name
+    
