@@ -1,1 +1,3 @@
-This is version 2 in master- branch testb
+This is version 1 in master
+
+But this is version 2 in branch :)
