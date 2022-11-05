@@ -28,4 +28,14 @@ Staged files are files that are ready to be committed to the repository you are 
 
 5.  If there are multiple files you can add git add - all
 
-6. ...
+6. git commit -m "my first commit" this will commit everything in the repo
+
+7.  git log to view the status
+
+8. create a git branch git branch branch-name
+
+9.  git branch this will give new branch created
+
+10. checkout is the command used to check out a branch. Moving us from the current branch, to the   one specified at the end of the command  
+   git checkout new-branch
+11.   
