@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: maintainence
+spec:
+ containers:
+  -  name: maintainence
+     image: busybox 
+     command: ['sh', '-c', 'while true; do echo Success! >> /output/output.txt; sleep 5; done']
+     volumeMounts:
+      - name: ouput-vol
+        mountPath: /output
+ volumes: 
+  - name: ouput-vol
+    hostPath:
+    path: /var/data

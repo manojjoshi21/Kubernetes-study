@@ -1,0 +1,27 @@
+1. Kubernetes Architecture
+   
+   Control  plane components
+   1. Kube-apiserver
+   2. etcd
+   3. Kube-scheduler
+   4. Kube-controller-manager
+   5. Cloud controller
+
+   Worker node components
+   1. Kubectl
+   2. Kube proxy
+
+Add ons
+1. DNS
+2. Web UI dashboard
+3. Container resource monitoring
+4. Cluster level logging
+
+https://kubernetes.io/docs/concepts/overview/components/
+
+
+2. Pods 
+
+3. Replicasets
+
+4. Namespaces 

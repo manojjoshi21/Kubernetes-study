@@ -1,0 +1,106 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: c67b02ca29774183c5e57696e754b83808a6015bff4a3881952b512f1fa0709b
+    cni.projectcalico.org/podIP: 192.168.194.65/32
+    cni.projectcalico.org/podIPs: 192.168.194.65/32
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"name":"beebox-auth","namespace":"beebox-mobile"},"spec":{"containers":[{"command":["sh","-c","while true; echo \"Auth processing...\"; do sleep 3600; done"],"image":"radial/busyboxplus:curl","name":"busybox"}]}}
+  creationTimestamp: "2022-11-11T08:17:07Z"
+  name: beebox-auth
+  namespace: beebox-mobile
+  resourceVersion: "777"
+  uid: a123672a-ee23-439d-91e8-03aee015943e
+spec:
+  containers:
+  - command:
+    - sh
+    - -c
+    - while true; echo "Auth processing..."; do sleep 3600; done
+    image: radial/busyboxplus:curl
+    imagePullPolicy: IfNotPresent
+    name: busybox
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-6lxp6
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: k8s-worker1
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-6lxp6
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2022-11-11T08:18:12Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2022-11-11T08:18:29Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2022-11-11T08:18:29Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2022-11-11T08:18:12Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://4e4b8fbe963e12d37442e68b9379736da0a38fd641c781052507775443ada609
+    image: docker.io/radial/busyboxplus:curl
+    imageID: sha256:4776f1f7d1f625c8c5173a969fdc9ae6b62655a2746aba989784bb2b7edbfe9b
+    lastState: {}
+    name: busybox
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2022-11-11T08:18:28Z"
+  hostIP: 10.0.1.102
+  phase: Running
+  podIP: 192.168.194.65
+  podIPs:
+  - ip: 192.168.194.65
+  qosClass: BestEffort
+  startTime: "2022-11-11T08:18:12Z"

@@ -1,0 +1,4 @@
+kubectl expose deployment hello-world --type=NodePort --name=example-service
+
+kubectl expose deployment example --port=8765 --target-port=9376 \
+        --name=example-service --type=LoadBalancer
